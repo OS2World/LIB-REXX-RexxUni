@@ -1,0 +1,6 @@
+1.0	First release
+1.1	Large strings processing is fixed (thanks to Goran Ivankovic)
+1.2	New function UniCpName()
+
+2.0	UniQueryCp() as well as UniXlat() now accepts codepage names.
+        Zero Cp doesn't mean UniCode anymore (use 'UNICODE' or 1200 instead).

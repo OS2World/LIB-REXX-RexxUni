@@ -1,0 +1,50 @@
+RexxUni ver.2.0 (c) 2001,02 by Max Alekseyev <relf@os2.ru>
+
+RexxUni.Dll provides a part of UniCode API for Rexx programs. 
+It includes the following functions:
+
+1) UniLoadFuncs()
+
+UniLoadFuncs automatically loads all RexxUni functions. 
+To do this from within a program, add the following instructions: 
+
+  call RxFuncAdd 'UniLoadFuncs', 'RexxUni', 'UniLoadFuncs'
+  call UniLoadFuncs
+  
+Once the RexxUni functions are loaded by UniLoadFuncs they are usable by all OS/2 sessions. 
+
+2) UniDropFuncs()
+
+UniDropFuncs drops all the loaded RexxUni functions. 
+Once this function is processed by a REXX program, the RexxUni functions are not accessible in any OS/2 sessions. 
+  
+3) UniQueryCp( [ CpName ] )
+
+UniQueryCp queries and returns number of codepage with a name CpName.
+When CpName is missed UniQueryCp returns current system codepage.
+UniQueryCp returns a zero value when codepage is unknown or not supported by OS/2.
+
+4) UniXlat( Str , [ ToCp ] [, FromCp ] )
+
+UniXlat translates string Str from FromCp codepage to ToCp one.
+FromCp and ToCp may be either a number or a name of codepage.
+Missed or zero values of ToCp or FromCp mean a system codepage.
+
+Usage examples:
+
+  str2 = UniXlat( str1, 0, 1251)
+Translates str1 from 1251 to system codepage.
+
+  str2 = UniXlat( str1, 'UNICODE' )
+Translates str1 from system codepage to UniCode.
+
+5) UniCpName( [Cp] )
+
+UniCpName queries and returns a name of given codepage.
+If Cp is zero or missed a system codepage will be returned.
+UniCpName returns an empty string when codepage is unknown or not supported by OS/2.
+
+See also 
+UniTest.Cmd for additional examples 
+and
+\LANGUAGE\CODEPAGE\UCSTBL.LST for codepage names.
